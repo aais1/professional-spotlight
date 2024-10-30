@@ -161,7 +161,7 @@ export default function BiographyPage() {
       <div className="min-h-screen bg-white">
         <div className="relative space-y-2 bg-center mt-5 sm:mt-10 px-4 sm:px-10 rounded-lg w-full">
           <div className="relative   bg-[#124e66] ">
-            <div className="bg-[#124e66] h-[29rem] md:h-[38rem] w-full overflow-hidden">
+            <div className="bg-[#124e66] h-[24rem] md:h-[38rem] w-full overflow-hidden">
               <img
                 className="object-fill w-full lg:min-w-[55%] lg:max-w-[58%] mx-auto  h-full bg-center "
                 src={biography?.banner}

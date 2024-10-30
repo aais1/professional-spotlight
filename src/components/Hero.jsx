@@ -14,7 +14,7 @@ export function Hero() {
 
   return (
     <motion.div
-      className="relative py-2 sm:py-4 md:py-8 lg:py-16 hero overflow-hidden"
+      className="relative mb-8 py-2 sm:py-4 md:py-8 lg:py-16 hero overflow-hidden"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
