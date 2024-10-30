@@ -1,0 +1,35 @@
+/* nav.module.css */
+.Navbar{
+    background-color: #E5E3E1;
+}
+.hoverEffect {
+    transition: color 0.3s ease;
+}
+
+.hoverEffect:hover { /* Change to desired hover color */
+ transition: all 0.3s ease; 
+}
+/*  for responsive designs */
+
+.Navbar {
+  position: relative;
+}
+
+.Navbar .hamburger-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.Navbar .hamburger-menu.open {
+  transform: translateX(0);
+}
+
+.Navbar .hamburger-menu.closed {
+  transform: translateX(100%);
+}

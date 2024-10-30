@@ -1,0 +1,19 @@
+/* Add this CSS to your stylesheet */
+.searchBox {
+  position: relative;
+    display: inline-block;
+    
+}
+
+.searchBox input {
+  padding-left: 30px; /* Adjust based on the size of your icon */
+
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px; /* Adjust based on desired position inside input */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Makes the icon non-interactive */
+}
