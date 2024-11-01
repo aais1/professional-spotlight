@@ -90,7 +90,7 @@ export default function Home() {
                 <SkeletonCard key={index} />
               ))
             : biographies.map((biography) => (
-                <div key={biography._id} className="flex-shrink-0 w-64 h-[30rem] sm:w-72">
+                <div key={biography._id} className="flex-shrink-0 h-[30rem] sm:w-72">
                   <Biographycard Biographycard={biography} />
                 </div>
               ))}
@@ -111,7 +111,7 @@ export default function Home() {
                 <SkeletonCard key={index} />
               ))
             : portfolios.map((portfolio) => (
-                <div key={portfolio._id} className="flex-shrink-0 w-64 h-[30rem] sm:w-72">
+                <div key={portfolio._id} className="flex-shrink-0 h-[30rem] sm:w-72">
                   <Portfoliocard portfoliocard={portfolio} />
                 </div>
               ))}
