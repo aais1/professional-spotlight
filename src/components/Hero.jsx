@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SkeletonCard from "./SkeletonCard";
+import getApi from "../utils/sendrequest";
 
 export function Hero() {
   const [biographies, setBiographies] = useState([]);
@@ -10,7 +11,8 @@ export function Hero() {
     const fetchBiographies = async () => {
       setLoading(true);
       try {
-        const response = await fetch("https://professional-spotlight-backend.vercel.app/admin/biography/heart");
+    
+        const response = await getApi('GET', '/user/biography/heart');
         if (!response.ok) {
           throw new Error("Failed to fetch biographies");
         }
