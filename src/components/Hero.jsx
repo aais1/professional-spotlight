@@ -11,7 +11,7 @@ export function Hero() {
     const fetchBiographies = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://professional-spotlight-backend-beta.vercel.app/user/biography/heart');
+        const response = await fetch('https://professional-spotlight-backend-beta.vercel.app/user/biography/heart');
         
         // Ensure response.ok is true before parsing JSON
         if (!response.ok) {
