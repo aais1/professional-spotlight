@@ -125,7 +125,11 @@ export default function BiographyPage() {
   };
 
   if (!biography.title) {
-    return <p>No biography data available</p>;
+    return (
+    <div className="min-h-screen flex items-center justify-center bg-white z-50">
+      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#124e66]"></div>
+    </div>
+    );
   }
 
   const parseOptions = {
@@ -305,37 +309,39 @@ export default function BiographyPage() {
 
                 {/* Popular posts */}
                 <div className="flex flex-col mt-8 space-y-4">
-                  <h2 className="text-white inline p-1 w-20 bg-[#124e66] font-semibold text-start border rounded-sm text-xl">
+                  <h2 className="text-white inline p-2 w-20 bg-[#124e66] font-semibold text-start border rounded-md text-lg">
                     Popular
                   </h2>
                   <div className="border border-[#124e66] w-full my-0.5"></div>
                   <div className="space-y-4">
-                    {popularBiographies.map((bio) => (
+                    {popularBiographies.map((bio) => {
+                      const [name,title]=bio.title.split(':');
+                      return(
                       <RouterLink
                         key={bio._id}
                         to={{
                           pathname: `/biography/${bio.slug}`,
                           state: { biography: bio },
                         }}
-                        className="block bg-gray-200 rounded-lg p-4 hover:bg-gray-300"
+                        className="block bg-gray-200 rounded-lg p-1 hover:bg-gray-300"
                       >
                         <div className="flex space-x-4">
                           <img
-                            className="h-16 w-16 object-cover rounded-lg"
+                            className="h-[115px] min-w-30 object-cover rounded-lg"
                             src={bio.banner}
                             alt={bio.title}
                           />
                           <div>
-                            <h3 className="font-semibold text-[#124e66]">
-                              {bio.title.substring(0, 20)}..
+                            <h3 className="font-semibold line-clamp-1 text-[#124e66]">
+                              {name}
                             </h3>
-                            <p className="text-sm text-gray-600">
-                              {bio.shortDescription}
+                            <p className="text-sm text-gray-600 line-clamp-2">
+                              {title.slice(0,200)}
                             </p>
                           </div>
                         </div>
                       </RouterLink>
-                    ))}
+                    )})}
                   </div>
                 </div>
               </div>
