@@ -117,7 +117,7 @@ export default function Portfolio() {
       </div>
 
       {/* Portfolio Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 py-4  md:py-8">
         {loading ? (
           // Render skeletons during loading
           Array.from({ length: 6 }).map((_, index) => (

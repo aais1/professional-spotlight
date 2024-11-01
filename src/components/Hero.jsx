@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import Marquee from "react-marquee-slider";
 import SkeletonCard from "./SkeletonCard";
-import getApi from "../utils/sendrequest";
+import { motion } from "framer-motion";
 
 export function Hero() {
   const [biographies, setBiographies] = useState([]);
@@ -12,25 +12,20 @@ export function Hero() {
       setLoading(true);
       try {
         const response = await fetch('https://professional-spotlight-backend-beta.vercel.app/user/biography/heart');
-        
-        // Ensure response.ok is true before parsing JSON
         if (!response.ok) {
           throw new Error("Failed to fetch biographies");
         }
-
         const data = await response.json();
-        setBiographies(data.biographies || []); // Fallback to an empty array if biographies is undefined
+        setBiographies(data.biographies || []);
       } catch (error) {
         console.error("Error fetching biographies:", error.message);
       } finally {
         setLoading(false);
       }
     };
-
     fetchBiographies();
   }, []);
 
-  // Show loading skeleton while fetching data
   if (loading) {
     return (
       <>
@@ -52,7 +47,6 @@ export function Hero() {
     );
   }
 
-  // Render biographies
   return (
     <motion.div
       className="relative mb-8 py-2 sm:py-4 md:py-8 lg:py-16 hero overflow-hidden"
@@ -69,33 +63,36 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="flex sm:mx-auto overflow-x-auto space-x-4 justify-center">
-        {biographies.map((bio) => {
+      <Marquee velocity={20} direction="rtl" resetAfterTries={3}>
+        {biographies.map((bio,index) => {
           const [name, title] = bio.title.split(':');
-
           return (
             <motion.div
               key={bio._id}
-              className="flex-shrink-0 p-6 w-72 rounded-lg bg-[#e6f4f9] shadow-lg flex flex-col items-center transition-transform transform"
+              className={`flex-shrink-0 p-6 w-72 rounded-lg shadow-lg flex flex-col items-center m-4 ${index===3&& 'bg-purple-100'} ${index===2&& 'bg-pink-100'} ${index===1&& 'bg-green-50'} ${index===0&& 'bg-blue-50'}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
             >
               <h2 className="text-lg font-bold text-[#0d4f6f] mb-2 text-center">
                 {name.trim()}
               </h2>
               <p className="text-sm text-gray-700 line-clamp-3 mb-3 text-center">
-                {title?.trim()} {/* Ensure title is defined before trimming */}
+                {title?.trim()}
               </p>
               <img
                 src={bio.banner}
                 alt={bio.title}
                 className="w-36 h-36 object-cover rounded-full mb-4 border-2 border-[#0d4f6f] shadow-md"
               />
-              <a href={`/biography/${bio.slug}`} className="text-sm text-blue-600 font-semibold flex items-center">
+              <a href={`/biography/${bio.slug}`} className="text-sm text-blue-600 hover:underline font-semibold flex items-center">
                 Read more <span className="ml-1">→</span>
               </a>
             </motion.div>
           );
         })}
-      </div>
+      </Marquee>
     </motion.div>
   );
 }

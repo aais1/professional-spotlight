@@ -273,20 +273,22 @@ export default function BiographiesListingPage() {
                 </p>
               </div>
               <div className="mt-12">
-                <div className="p-5 space-y-4">
-                  <h2 className="text-white inline p-1 bg-[#124e66] font-semibold text-start border rounded-sm text-xl">Popular</h2>
+                <div className="p-2 space-y-4">
+                  <h2 className="text-white inline px-2 py-1 rounded-lg bg-[#124e66] font-semibold text-start border text-lg cursor-pointer">Popular</h2>
                   <div className="border border-[#124e66] w-full my-2"></div>
                   <div className="space-y-4">
-                    {popularBiographies?.map((bio) => (
+                    {popularBiographies?.map((bio) =>
+                    { const [name,title]= bio.title.split(':')
+                      return (
                       <RouterLink
                         key={bio._id}
                         to={{
                           pathname: `/biography/${bio.slug}`,
                         }}
                         state={{ biography: bio, popularBiographies }}
-                        className="flex items-center p-2 bg-gray-100 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
+                        className="flex p-1 bg-gray-100 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
                       >
-                        <div className="w-20 h-20">
+                        <div className="min-w-[95px] h-24">
                           <img
                             src={bio.banner}
                             alt={bio.title}
@@ -294,12 +296,15 @@ export default function BiographiesListingPage() {
                           />
                         </div>
                         <div className="ml-4">
-                          <p className=" text-[#124e66] font-semibold">
-                            {bio.title.substring(0, 20)}
-                          ..</p>
+                          <p className=" text-[#124e66] font-semibold line-clamp-1">
+                            {name}
+                          </p>
+                          <p className=" text-gray-500 text-sm font-semibold break-all line-clamp-2">
+                            {title.slice(0,100)}
+                          </p>
                         </div>
                       </RouterLink>
-                    ))}
+                    )})}
                   </div>
                 </div>
               </div>

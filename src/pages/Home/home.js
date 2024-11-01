@@ -79,7 +79,7 @@ export default function Home() {
       {/* Biographies Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl font-bold text-[#124e66]">Biographies</h1>
+          <h1 className="text-2xl font-bold text-[#124e66] mb-6">Biographies</h1>
           <RouterLink to="/leaders-journey">
             <p className="hover:font-medium text-[#124e66]">See More</p>
           </RouterLink>
@@ -100,7 +100,7 @@ export default function Home() {
       {/* Portfolios Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl font-bold text-[#124e66]">Portfolios</h1>
+          <h1 className="text-2xl mb-6 font-bold text-[#124e66]">Portfolios</h1>
           <RouterLink to="/portfolio-hub">
             <p className="hover:font-medium text-[#124e66]">See More</p>
           </RouterLink>
