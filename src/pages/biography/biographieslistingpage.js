@@ -66,9 +66,9 @@ export default function BiographiesListingPage() {
 
 
   //gen perma links
-  useEffect(()=>{
-    window.history.pushState(selectedCategory, "Biographies", `/leaders-journey/${selectedCategory}`);
-  },[selectedCategory])
+  useEffect(() => {
+    window.history.replaceState(selectedCategory, "Biographies", `/leaders-journey/${selectedCategory}`);
+  }, [selectedCategory])
 
   const filteredBiographies =
     selectedCategory === "all"
@@ -135,12 +135,12 @@ export default function BiographiesListingPage() {
         </div>
       )}
 
-      <div className="bg-white relative p-3 space-y-4">
-        <h1 className="text-xl sm:text-5xl font-[Frutiger] font-semibold text-center text-[#124e66]">
+      <div className="bg-white relative pt-1 p-2 space-y-4">
+        <h1 className="text-2xl sm:text-6xl font-[Frutiger] font-semibold text-center text-[#124e66]">
           Biographies
         </h1>
         <div
-          className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-[75%] md:mx-auto bg-[#124e66] "
+          className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
           style={{ scrollbarWidth: "none", msOverflowStyle: "none", whiteSpace: "nowrap", overflowX: "scroll" }}
         >
           <style>{`
@@ -152,7 +152,7 @@ export default function BiographiesListingPage() {
             <button
             key={category}
             className={`p-2 m-1  whitespace-nowrap ${
-              selectedCategory === category ? "bg-white md:px-4 rounded-sm text-black" : "text-white"
+              selectedCategory === category ? "bg-white md:px-4 rounded-sm  font-semibold text-black" : "text-white"
             }
             
             `}
@@ -161,7 +161,9 @@ export default function BiographiesListingPage() {
               setCurrentPage(1);
             }}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}{
+              category!=="all" && "Biographies"
+            }
             </button>
           ))}
 

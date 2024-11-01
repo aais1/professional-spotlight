@@ -6,13 +6,13 @@ export default function BiographyOfTheDay({ card }) {
 
   return (
     <Link to={`/biography/${slug}`}>
-      <div className="bg-[#f5f1e4] w-full max-w-4xl mx-auto h-full border-8 p-4 font-serif">
-        <h1 className="text-base sm:text-2xl mb-4 font-bold text-[#333]">Biography of the Day</h1>
+      <div className="bg-[#f5f1e4] w-full max-w-4xl mx-auto h-full border-8 p-1 md:p-4 font-serif">
+        <h1 className="text-base sm:text-2xl mb-4 font-bold py-4 text-center text-[#333]">Biography of the Day</h1>
         <div className="sm:flex h-72 sm:h-64">
           <img
             src={card.banner}
             alt={card.title}
-            className="w-full sm:w-1/2 h-40 sm:h-full object-contain sm:object-cover"
+            className="w-full rounded-sm sm:w-1/2 h-40 sm:h-full object-contain sm:object-cover"
           />
           <div className="w-full sm:w-1/2 pl-4 flex flex-col justify-between">
             <div >

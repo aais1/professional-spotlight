@@ -108,7 +108,9 @@ export default function Portfolio() {
               }`}
               onClick={() => setSelectedCategory(category)}
             >
-              {category}
+              {category}{" "}{
+                category !=="all" && "Portfolios"
+              }
             </button>
           ))}
         </div>

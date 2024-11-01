@@ -6,13 +6,13 @@ export default function PortfolioOfTheWeek({ card }) {
 
   return (
     <Link to={`/portfolio/${slug}`} className="block">
-      <div className="bg-[#f5f1e4] w-full max-w-4xl mx-auto h-full border-8 p-4 font-serif">
-        <h1 className="text-base sm:text-2xl mb-4 font-bold text-[#333]">Portfolio of the Week</h1>
+      <div className=" w-full max-w-4xl  mx-auto p-1 md:p-4 font-serif">
+        <h1 className="text-base sm:text-2xl mb-4 py-4 font-bold text-center text-[#333]">Portfolio of the Week</h1>
         <div className="sm:flex h-72 sm:h-64">
           <img
             src={card.banner}
             alt={card.title}
-            className="w-full sm:w-1/2 h-40 sm:h-full object-contain sm:object-cover"
+            className="w-full rounded-sm sm:w-1/2 h-40 sm:h-full object-contain sm:object-cover"
           />
           <div className="w-full sm:w-1/2 pl-4 flex flex-col justify-between">
             <div>

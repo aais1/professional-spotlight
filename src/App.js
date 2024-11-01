@@ -27,7 +27,13 @@ function App() {
   <Route path="/login" element={<Login />} />
   <Route path='/portfolio-hub' element={<Portfolio/>}/>
   <Route path='/portfolio/:slug' element={<SinglePortfolio/>}/>
-  <Route path="/leaders-journey" element = {<Biographies/>}/> 
+  <Route path="/leaders-journey" element = {<Biographies/>}/>
+  <Route path="/leaders-journey/all" element = {<Biographies/>}/> 
+  <Route path="/leaders-journey/Entrepreneurs" element = {<Biographies/>}/> 
+  <Route path="/leaders-journey/CEO" element = {<Biographies/>}/> 
+  <Route path="/leaders-journey/Presidents" element = {<Biographies/>}/>  
+  <Route path="/leaders-journey/Founders" element = {<Biographies/>}/> 
+  <Route path="/leaders-journey/Executives" element = {<Biographies/>}/> 
   <Route path='/biography/:slug' element={<Biography/>} />
   <Route path='/terms-and-conditions'  element={<TermsandConditions/>}/>
   <Route path='/privacy-policy'  element={<PrivacyPolicy/>}/>

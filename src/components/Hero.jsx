@@ -1,16 +1,51 @@
-import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import SkeletonCard from "./SkeletonCard";
 
 export function Hero() {
-  const controls = useAnimation();
+  const [biographies, setBiographies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    controls.start({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1.5, ease: "easeOut" },
-    });
-  }, [controls]);
+    const fetchBiographies = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("https://professional-spotlight-backend.vercel.app/admin/biography/heart");
+        if (!response.ok) {
+          throw new Error("Failed to fetch biographies");
+        }
+        const data = await response.json();
+        setBiographies(data.biographies);
+      } catch (error) {
+        console.error("Error fetching biographies:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBiographies();
+  }, []);
+
+  if (loading) {
+    return (
+      <>
+      <div className="text-center mb-12 px-4 pt-12">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0d4f6f] mb-4">
+          Professionals Spotlight
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 mb-4">
+          Elevating Your Presence with Impactful Biographies and Portfolios
+        </p>
+      </div>
+      <div className="flex space-x-2 justify-center p-4">
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>
+      </>
+    );
+  }
 
   return (
     <motion.div
@@ -19,61 +54,41 @@ export function Hero() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      {/* Main Title Section */}
       <div className="text-center mb-12 px-4">
-        <h1 className="text-3xl md-text-5xl lg:text-6xl font-bold text-[#0d4f6f] mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0d4f6f] mb-4">
           Professionals Spotlight
         </h1>
         <p className="text-lg md:text-xl text-gray-600 mb-4">
           Elevating Your Presence with Impactful Biographies and Portfolios
         </p>
-        <div className="max-w-3xl mx-auto">
-          <p className="mt-4 text-md md:text-lg text-gray-500 leading-relaxed">
-            In today's competitive landscape, standing out is essential. At Professionals Spotlight, we specialize in helping you shine by crafting personalized narratives that not only highlight your achievements but also resonate with your audience.
-          </p>
-        </div>
       </div>
 
-      {/* Content Sections */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8">
-        {/* Our Company Section */}
-        <motion.div
-          className="p-6 rounded-lg bg-[#f0f8fb] shadow-md flex flex-col items-center text-center transition-transform transform hover:scale-105"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-xl font-semibold text-[#0d4f6f] mb-2">Our Company</h2>
-          <p className="text-gray-700">
-            Welcome to Professionals Spotlight, your premier destination for publishing exceptional biographies and creating impactful online portfolios. Established in Los Angeles in 2024, our mission is to elevate your online presence, ensuring your expertise is recognized and celebrated.
-          </p>
-        </motion.div>
+      <div className="flex sm:mx-auto overflow-x-auto space-x-4 justify-center">
+        {biographies.map((bio) => {
+          const [name, title] = bio.title.split(':');
 
-        {/* Our Mission and Services Section */}
-        <motion.div
-          className="p-6 rounded-lg bg-[#e6f4f9] shadow-md flex flex-col items-center text-center transition-transform transform hover:scale-105"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-xl font-semibold text-[#0d4f6f] mb-2">Our Mission and Services</h2>
-          <p className="text-gray-700">
-            At Professionals Spotlight, we empower CEOs and students by crafting impactful portfolios and biographies that showcase their unique strengths and achievements. We position our clients for growth and recognition by combining expertly tailored content with advanced SEO strategies.
-          </p>
-        </motion.div>
-
-        {/* Why Choose Us Section */}
-        <motion.div
-          className="p-6 rounded-lg bg-[#d9eef7] shadow-md flex flex-col items-center text-center transition-transform transform hover:scale-105"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-        >
-          <h2 className="text-xl font-semibold text-[#0d4f6f] mb-2">Why Choose Us?</h2>
-          <p className="text-gray-700">
-            Professionals Spotlight is your dedicated partner in growth. Our focus on authenticity, quality, and personalized storytelling helps CEOs, students, and professionals craft narratives that maximize visibility and impact.
-          </p>
-        </motion.div>
+          return (
+            <motion.div
+              key={bio._id}
+              className="flex-shrink-0 p-6 w-72 rounded-lg bg-[#e6f4f9] shadow-lg flex flex-col items-center transition-transform transform"
+            >
+              <h2 className="text-lg font-bold text-[#0d4f6f] mb-2 text-center">
+                {name.trim()} {/* Display the name part */}
+              </h2>
+              <p className="text-sm text-gray-700 line-clamp-3 mb-3 text-center">
+                {title.trim()} {/* Display the title part with line clamp */}
+              </p>
+              <img
+                src={bio.banner}
+                alt={bio.title}
+                className="w-36 h-36 object-cover rounded-full mb-4 border-2 border-[#0d4f6f] shadow-md" // Image styling
+              />
+              <a href={`/biography/${bio.slug}`} className="text-sm text-blue-600 font-semibold flex items-center">
+                Read more <span className="ml-1">→</span>
+              </a>
+            </motion.div>
+          );
+        })}
       </div>
     </motion.div>
   );
