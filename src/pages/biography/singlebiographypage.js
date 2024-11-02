@@ -14,6 +14,7 @@ import DOMPurify from "dompurify";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-quill/dist/quill.snow.css";
+import background from "./background.png";
 const linkify = (text) => {
   // Handle full HTML-like links
   const htmlLinkPattern = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1[^>]*>(.*?)<\/a>/g;
@@ -162,12 +163,18 @@ export default function BiographyPage() {
         </div>
       )}
 
+
       <div className="min-h-screen bg-white">
         <div className="relative space-y-2 bg-center mt-5 sm:mt-10 px-4 sm:px-10 rounded-lg w-full">
           <div className="relative   bg-[#124e66] ">
-            <div className="bg-[#124e66] h-[24rem] md:h-[38rem] w-full overflow-hidden">
+            <div  style={{
+            backgroundImage:`url(${background})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }}  className="h-[24rem] md:h-[38rem]  w-full overflow-hidden">
               <img
-                className="object-fill w-full lg:min-w-[55%] lg:max-w-[58%] mx-auto  h-full bg-center "
+                className="object-fill w-full lg:min-w-[55%] lg:max-w-[57%] mx-auto  h-full bg-center "
                 src={biography?.banner}
                 alt={biography?.title}
               />
