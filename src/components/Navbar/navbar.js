@@ -47,11 +47,17 @@ export default function Navbar() {
   ];
 
   // Condition to show the back button or the navbar
-  if (pathname.includes('leaders-journey')) {
+  if (pathname.includes('leaders-journey')||pathname.includes('biography')) {
     return (
       <div className="pt-4 mx-4">
       <button 
-        onClick={() => navigate('/')} // Navigate back using navigate
+        onClick={() =>{
+          if(pathname.includes('biography')){
+            navigate('/leaders-journey');
+          }else{
+            navigate('/')
+          }
+        }} // Navigate back using navigate
         className="flex items-center font-semibold px-4 py-2 text-white bg-[#124e66] rounded-lg hover:bg-[#0f3d4e] transition"
         >
         Back
