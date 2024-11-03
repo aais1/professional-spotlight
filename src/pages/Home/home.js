@@ -64,9 +64,9 @@ export default function Home() {
           </div>
         ) : (
           <div className="max-w-[1300px] mx-auto pt-0 md:pt-4 p-6">
-          <div className="text-center">
-
-                  <h1 className="bg-[#ffeb3b] inline-block px-4 py-4 text-left mb-[24px] md:mb-[42px] font-bold italic text-2xl text-[#124e66]">FEATURED WORK</h1>
+          <div className="flex justify-center items-center mx-auto">
+  <h1 className="line-block px-4 py-4 text-left mb-[24px] md:mb-[42px] font-bold italic text-2xl text-[#124e66]">FEATURED</h1> {" "}
+                  <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2 text-left mb-[24px] md:mb-[42px] font-bold italic text-2xl text-[#124e66]">WORK</h1>
           </div>
           <div className=" md:h-[630px] flex flex-col sm:flex-row bg-[#124e66] rounded-xl p-5 sm:p-6 gap-5">
             <div className="flex-1 bg-[#f5f1e4]">
@@ -83,9 +83,14 @@ export default function Home() {
       {/* Biographies Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl font-bold text-[#124e66] md:mb-6">Latest Biographies</h1>
+        <div className="flex justify-start items-center">
+  <h1 className="line-block px-4 py-4 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
+                  <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2 text-left font-bold italic text-2xl text-[#124e66]">Biographies</h1>
+          </div>
+          <div>
           <RouterLink to="/leaders-journey">
           <p className="hover:underline rounded-md px-2 py-1 text-white  md:px-4 md:py-2 bg-[#124e66]">See More</p>          </RouterLink>
+          </div>
         </div>
         <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory h-[30rem] items-center">
           {loading
@@ -103,7 +108,10 @@ export default function Home() {
       {/* Portfolios Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl mb:mb-6 font-bold text-[#124e66]">Latest Portfolios</h1>
+        <div className="flex justify-start items-center">
+  <h1 className="line-block px-4 py-4 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
+                  <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2text-left font-bold italic text-2xl text-[#124e66]">Portfolios</h1>
+          </div>
           <RouterLink to="/portfolio-hub">
             <p className="hover:underline rounded-md text-white px-2 py-1  md:px-4 md:py-2 bg-[#124e66]">See More</p>
           </RouterLink>
