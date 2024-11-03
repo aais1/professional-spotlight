@@ -8,10 +8,7 @@ import PortfolioHeader from "./portfolioHeader";
 
 const categories = [
   "Healthcare",
-  "CS",
   "Media",
-  "Marketing",
-  "Finance",
   "Art",
   "Engineering",
   "Business",
