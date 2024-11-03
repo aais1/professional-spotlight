@@ -63,7 +63,11 @@ export default function Home() {
             <SkeletonCard />
           </div>
         ) : (
-          <div className="max-w-[1300px] mx-auto p-6">
+          <div className="max-w-[1300px] mx-auto pt-4 p-6">
+          <div className="text-center">
+
+                  <h1 className="text-5xl bg-[#ffeb3ba1] inline-block px-4 py-4 md:text-[55px] text-center mb-8 font-bold italic  text-[#124e66]">FEATURED WORK</h1>
+          </div>
           <div className=" md:h-[630px] flex flex-col sm:flex-row bg-[#124e66] rounded-xl p-5 sm:p-6 gap-5">
             <div className="flex-1 bg-[#f5f1e4]">
               <PortfolioftheDay card={portfolioOfTheDay} />

@@ -174,7 +174,7 @@ export default function BiographyPage() {
             backgroundSize: 'cover',
           }}  className="h-[24rem] md:h-[38rem]  w-full overflow-hidden">
               <img
-                className="object-fill w-full lg:min-w-[55%] lg:max-w-[57%] mx-auto  h-full bg-center "
+                className="object-fill w-full lg:min-w-[48%] lg:max-w-[50%] mx-auto  h-full bg-center "
                 src={biography?.banner}
                 alt={biography?.title}
               />

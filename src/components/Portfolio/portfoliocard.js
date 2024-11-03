@@ -10,6 +10,7 @@ export default function portfoliocard({ portfoliocard }) {
   const date = new Date(portfoliocard.Date);
 const time = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
   const slug = portfoliocard.slug;
+  console.log(portfoliocard);
   return (
     <>
       <Link to={`/portfolio/${slug}`}>
@@ -19,9 +20,12 @@ const time = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
             alt={title}
             className="border rounded-md h-64 object-cover"
           />
-          <div>
+          <div className="flex justify-between mt-1">
             <h1 className="font-semibold font-[Frutiger] p-1 text-lg text-[#212a31] hover:text-[#748d92]">
               {title}
+            </h1>
+            <h1 className="font-semibold font-[Frutiger] italic text-md text-[#212a31] hover:text-[#748d92]">
+              {category}
             </h1>
             {/* <p className="w-full p-1 text-sm text-[#124e66] hover:text-[#748d92]">
               {about}
