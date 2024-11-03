@@ -22,26 +22,46 @@ function App() {
     <div>
 <Navbar/>
   <ToastContainer/>
-<Routes>
-  <Route path="/" element={<Home/>} />
+  <Routes>
+  <Route path="/" element={<Home />} />
   <Route path="/login" element={<Login />} />
-  <Route path='/portfolio-hub' element={<Portfolio/>}/>
-  <Route path='/portfolio/:slug' element={<SinglePortfolio/>}/>
-  <Route path="/leaders-journey" element = {<Biographies/>}/>
-  <Route path="/leaders-journey/all" element = {<Biographies/>}/> 
-  <Route path="/leaders-journey/Entrepreneurs" element = {<Biographies/>}/> 
-  <Route path="/leaders-journey/CEO" element = {<Biographies/>}/> 
-  <Route path="/leaders-journey/Presidents" element = {<Biographies/>}/>  
-  <Route path="/leaders-journey/Founders" element = {<Biographies/>}/> 
-  <Route path="/leaders-journey/Executives" element = {<Biographies/>}/> 
-  <Route path='/biography/:slug' element={<Biography/>} />
-  <Route path='/terms-and-conditions'  element={<TermsandConditions/>}/>
-  <Route path='/privacy-policy'  element={<PrivacyPolicy/>}/>
-  <Route path='/search/:query' element={<SearchResults/>}/>
-  <Route path='/reviews' element={<Review/>}/>
-  <Route path='/about-us' element={<About/>}/>
-  <Route path='/biography/test-biography/:slug' element={<TestBiography/>}/>
-  <Route path='*' element={<h1>Not Found</h1>}/>
+  <Route path="/portfolio-hub" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Healthcare" element={<Portfolio />} />
+  <Route path="/portfolio-hub/CS" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Media" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Marketing" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Finance" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Art" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Engineering" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Business" element={<Portfolio />} />
+  <Route path="/portfolio-hub/Journalism" element={<Portfolio />} />
+  <Route path="/leaders-journey/Healthcare" element={<Portfolio />} />
+  <Route path="/leaders-journey/CS" element={<Portfolio />} />
+  <Route path="/leaders-journey/Media" element={<Portfolio />} />
+  <Route path="/leaders-journey/Marketing" element={<Portfolio />} />
+  <Route path="/leaders-journey/Finance" element={<Portfolio />} />
+  <Route path="/leaders-journey/Art" element={<Portfolio />} />
+  <Route path="/leaders-journey/Engineering" element={<Portfolio />} />
+
+  <Route path="/leaders-journey/Business" element={<Portfolio />} />
+  <Route path="/leaders-journey/Journalism" element={<Portfolio />} />
+  <Route path="/portfolio/:slug" element={<SinglePortfolio />} />
+  <Route path="/leaders-journey" element={<Biographies />} />
+  <Route path="/leaders-journey/all" element={<Biographies />} />
+  <Route path="/leaders-journey/Entrepreneurs" element={<Biographies />} />
+  <Route path="/leaders-journey/CEO" element={<Biographies />} />
+  <Route path="/leaders-journey/Presidents" element={<Biographies />} />
+  <Route path="/leaders-journey/Founders" element={<Biographies />} />
+  <Route path="/leaders-journey/Executives" element={<Biographies />} />
+  <Route path="/biography/:slug" element={<Biography />} />
+  <Route path="/terms-and-conditions" element={<TermsandConditions />} />
+  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+  <Route path="/search/:query" element={<SearchResults />} />
+  <Route path="/reviews" element={<Review />} />
+  <Route path="/about-us" element={<About />} />
+  <Route path="/biography/test-biography/:slug" element={<TestBiography />} />
+  
+  <Route path="*" element={<h1>Not Found</h1>} />
 </Routes>
 <Footer/>
     </div>

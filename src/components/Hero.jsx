@@ -69,7 +69,7 @@ export function Hero() {
           return (
             <motion.div
               key={bio._id}
-              className={`flex-shrink-0 p-6 w-78 rounded-lg shadow-lg flex flex-col items-center m-4 ${index===3&& 'bg-purple-100'} ${index===2&& 'bg-pink-100'} ${index===1&& 'bg-green-50'} ${index===0&& 'bg-blue-50'}`}
+              className={`flex-shrink-0 p-6 w-72 rounded-lg shadow-lg flex flex-col items-center m-4 ${index===3&& 'bg-purple-100'} ${index===2&& 'bg-pink-100'} ${index===1&& 'bg-green-50'} ${index===0&& 'bg-blue-50'}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

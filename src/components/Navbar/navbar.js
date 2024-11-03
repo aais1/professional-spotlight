@@ -47,7 +47,7 @@ export default function Navbar() {
   ];
 
   // Condition to show the back button or the navbar
-  if (pathname.includes('leaders-journey')) {
+  if (pathname.includes('leaders-journey') || pathname.includes('portfolio-hub')) {
     return (
       <div className="pt-4 mx-4">
       <button 

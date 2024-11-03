@@ -3,6 +3,8 @@ import Portfoliocard from "../../components/Portfolio/portfoliocard";
 import "./../../App.css";
 import getApi from "../../utils/sendrequest";
 import { FaArrowUp } from "react-icons/fa";
+import PortfolioHeader from "./portfolioHeader";
+
 
 const categories = [
   "Healthcare",
@@ -82,12 +84,13 @@ export default function Portfolio() {
 
   return (
     <>
+    
       {/* Categories */}
       <h2 className="text-2xl sm:text-6xl font-[Frutiger] mt-4 font-semibold text-center text-[#124e66]">
         Related Portfolios
       </h2>
       <div
-          className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
+          className="space-x-3 mb-4 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
           style={{ scrollbarWidth: "none", msOverflowStyle: "none", whiteSpace: "nowrap", overflowX: "scroll" }}
         >
           <style>{`
@@ -114,6 +117,9 @@ export default function Portfolio() {
           ))}
 
         </div>
+        
+
+        <PortfolioHeader />
 
       {/* Portfolio Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 py-4  md:py-8">
