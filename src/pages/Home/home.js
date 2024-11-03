@@ -84,7 +84,7 @@ export default function Home() {
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
         <div className="flex justify-start items-center">
-  <h1 className="line-block px-4 py-4 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
+  <h1 className="line-block p-2 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
                   <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2 text-left font-bold italic text-2xl text-[#124e66]">Biographies</h1>
           </div>
           <div>
@@ -109,7 +109,7 @@ export default function Home() {
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
         <div className="flex justify-start items-center">
-  <h1 className="line-block px-4 py-4 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
+  <h1 className="line-block p-2 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
                   <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2text-left font-bold italic text-2xl text-[#124e66]">Portfolios</h1>
           </div>
           <RouterLink to="/portfolio-hub">
