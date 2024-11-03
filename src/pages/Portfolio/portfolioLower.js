@@ -7,6 +7,7 @@ import PortfolioHeader from "./portfolioHeader";
 
 
 const categories = [
+  "All",
   "Healthcare",
   "Media",
   "Art",
@@ -35,7 +36,7 @@ export default function Portfolio() {
 
      //gen perma links
      useEffect(()=>{
-      window.history.pushState(selectedCategory, "Biographies", `/leaders-journey/${selectedCategory}`);
+      window.history.pushState(selectedCategory, "Portfolio", `/leaders-journey/${selectedCategory}`);
     },[selectedCategory])
 
   const FetchData = async () => {
@@ -51,7 +52,7 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    if (selectedCategory === "") {
+    if (selectedCategory === "All") {
       setFilteredPortfolios(portfolios);
     } else {
       setFilteredPortfolios(
@@ -108,7 +109,7 @@ export default function Portfolio() {
             }}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}{" "}{
-              category!=="all" && "Portfolios"
+              category!=="All" && "Portfolios"
             }
             </button>
           ))}

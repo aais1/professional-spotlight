@@ -35,6 +35,8 @@ function App() {
   <Route path="/leaders-journey/Healthcare" element={<Portfolio />} />
   <Route path="/leaders-journey/Media" element={<Portfolio />} />
   <Route path="/leaders-journey/Art" element={<Portfolio />} />
+  <Route path="/leaders-journey/All" element={<Portfolio />} />
+
   <Route path="/leaders-journey/Engineering" element={<Portfolio />} />
 
   <Route path="/leaders-journey/Business" element={<Portfolio />} />
