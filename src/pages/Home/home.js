@@ -66,7 +66,7 @@ export default function Home() {
           <div className="max-w-[1300px] mx-auto pt-0 md:pt-4 p-6">
           <div className="text-center">
 
-                  <h1 className="text-4xl bg-[#ffeb3b] inline-block px-4 py-4 pb-8 md:text-[55px] text-left mb-[48px] md:mb-[82px] font-bold italic  text-[#124e66]">FEATURED WORK</h1>
+                  <h1 className="bg-[#ffeb3b] inline-block px-4 py-4 text-left mb-[24px] md:mb-[42px] font-bold italic text-2xl text-[#124e66]">FEATURED WORK</h1>
           </div>
           <div className=" md:h-[630px] flex flex-col sm:flex-row bg-[#124e66] rounded-xl p-5 sm:p-6 gap-5">
             <div className="flex-1 bg-[#f5f1e4]">
