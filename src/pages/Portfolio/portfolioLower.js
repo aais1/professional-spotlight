@@ -52,7 +52,7 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    if (selectedCategory === "All" || selectedCategory === " ") {
+    if (selectedCategory === "All" || selectedCategory === "") {
       setFilteredPortfolios(portfolios);
     } else {
       setFilteredPortfolios(
