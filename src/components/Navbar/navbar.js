@@ -65,7 +65,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="hidden sm:flex sticky top-0 bg-[#124e66] z-10 items-center justify-around p-4">
+      <nav className="hidden sm:flex sticky top-0 bg-[#124e66] z-50 items-center justify-around p-4">
         <Link to="/">
           <img src={Logo} alt="Logo" className="h-14" />
         </Link>
