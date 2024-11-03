@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="p-6 bg-white">
+      <div className="pb-0  p-6 bg-white">
         <Hero />
       </div>
 
@@ -63,10 +63,10 @@ export default function Home() {
             <SkeletonCard />
           </div>
         ) : (
-          <div className="max-w-[1300px] mx-auto pt-4 p-6">
+          <div className="max-w-[1300px] mx-auto pt-0 md:pt-4 p-6">
           <div className="text-center">
 
-                  <h1 className="text-5xl bg-[#ffeb3ba1] inline-block px-4 py-4 md:text-[55px] text-center mb-8 font-bold italic  text-[#124e66]">FEATURED WORK</h1>
+                  <h1 className="text-4xl bg-[#ffeb3b] inline-block px-4 py-4 pb-8 md:text-[55px] text-left mb-[48px] md:mb-[82px] font-bold italic  text-[#124e66]">FEATURED WORK</h1>
           </div>
           <div className=" md:h-[630px] flex flex-col sm:flex-row bg-[#124e66] rounded-xl p-5 sm:p-6 gap-5">
             <div className="flex-1 bg-[#f5f1e4]">
@@ -83,10 +83,9 @@ export default function Home() {
       {/* Biographies Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl font-bold text-[#124e66] mb-6">Biographies</h1>
+          <h1 className="text-2xl font-bold text-[#124e66] md:mb-6">Latest Biographies</h1>
           <RouterLink to="/leaders-journey">
-            <p className="hover:font-medium text-[#124e66]">See More</p>
-          </RouterLink>
+          <p className="hover:underline rounded-md px-2 py-1 text-white  md:px-4 md:py-2 bg-[#124e66]">See More</p>          </RouterLink>
         </div>
         <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory h-[30rem] items-center">
           {loading
@@ -104,9 +103,9 @@ export default function Home() {
       {/* Portfolios Section */}
       <div className="max-w-[1200px] mx-auto p-4 bg-white">
         <div className="flex justify-between items-center mb-2">
-          <h1 className="text-2xl mb-6 font-bold text-[#124e66]">Portfolios</h1>
+          <h1 className="text-2xl mb:mb-6 font-bold text-[#124e66]">Latest Portfolios</h1>
           <RouterLink to="/portfolio-hub">
-            <p className="hover:font-medium text-[#124e66]">See More</p>
+            <p className="hover:underline rounded-md text-white px-2 py-1  md:px-4 md:py-2 bg-[#124e66]">See More</p>
           </RouterLink>
         </div>
         <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory h-[30rem] items-center">
