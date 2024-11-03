@@ -14,7 +14,7 @@ const time = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
   return (
     <>
       <Link to={`/portfolio/${slug}`}>
-        <div className="p-2 border rounded-md shadow-md md:w-72  flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-lg">
+        <div className="p-2 border rounded-md shadow-md mx-auto w-[80%] md:w-72  flex flex-col justify-between transition-transform transform ">
           <img
             src={banner}
             alt={title}
