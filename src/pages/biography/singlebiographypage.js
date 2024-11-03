@@ -170,11 +170,9 @@ export default function BiographyPage() {
             <div  style={{
             backgroundImage:`url(${background})`,
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: '',
-            backgroundSize: '',
-            objectFit: 'cover',
+            backgroundSize: 'contain',
+            objectFit: 'contain',
             minWidth: '100%',
-            backgroundSize:'cover'
           }}  className="h-[24rem] md:h-[38rem]  w-full overflow-hidden">
               <img
                 className="object-fill w-full lg:min-w-[48%] lg:max-w-[49.5%] mx-auto  h-full bg-center "
