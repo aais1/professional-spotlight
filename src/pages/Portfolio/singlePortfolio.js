@@ -139,7 +139,7 @@ const generateDocument = async () => {
 
   return (
     <div className="min-h-screen w-full bg-white flex flex-col justify-center items-center p-5">
-      <h1 className="text-[#124e66] font-bold text-3xl font-[Frutiger] mt-5 sm:mb-10">
+      <h1 className="text-2xl sm:text-6xl font-[Frutiger] font-semibold my-4 mb-6 text-center text-[#124e66]">
         Portfolio
       </h1>
       <div className="w-full sm:w-11/12 bg-[#124e66] rounded-xl mb-10 p-1 sm:py-4 sm:px-6">

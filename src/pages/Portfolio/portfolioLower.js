@@ -83,38 +83,37 @@ export default function Portfolio() {
   return (
     <>
       {/* Categories */}
-      <h2 className="pl-6 sm:pl-16 text-3xl text-start headings-font font-semibold text-[#124e66]">
+      <h2 className="text-2xl sm:text-6xl font-[Frutiger] mt-4 font-semibold text-center text-[#124e66]">
         Related Portfolios
       </h2>
-      <div className="flex justify-center mb-4 overflow-x-auto">
-        <div className="flex flex-row flex-wrap justify-center">
-          <button
-            className={`px-4 py-2 m-2 rounded ${
-              selectedCategory === ""
-                ? "bg-blue-500 text-white"
-                : "bg-gray-300 text-black"
-            }`}
-            onClick={() => setSelectedCategory("")}
-          >
-            All
-          </button>
+      <div
+          className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", whiteSpace: "nowrap", overflowX: "scroll" }}
+        >
+          <style>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
           {categories.map((category) => (
             <button
-              key={category}
-              className={`px-4 py-2 m-2 rounded ${
-                selectedCategory === category
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-black"
-              }`}
-              onClick={() => setSelectedCategory(category)}
+            key={category}
+            className={`p-2 m-1  whitespace-nowrap ${
+              selectedCategory === category ? "bg-white md:px-4 rounded-sm  font-semibold text-black" : "text-white"
+            }
+            
+            `}
+            onClick={() => {
+              setSelectedCategory(category);
+            }}
             >
-              {category}{" "}{
-                category !=="all" && "Portfolios"
-              }
+              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}{
+              category!=="all" && "Portfolios"
+            }
             </button>
           ))}
+
         </div>
-      </div>
 
       {/* Portfolio Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 py-4  md:py-8">
