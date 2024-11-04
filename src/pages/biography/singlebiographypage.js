@@ -180,7 +180,7 @@ export default function BiographyPage() {
                 alt={biography?.title}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                <h1 className="text-lg sm:text-3xl text-center sm:mb-6 font-semibold font-[Frutiger] text-white w-[80%] mx-auto">
+                <h1 className="text-lg sm:text-[54px] leading-[1.1] text-center sm:mb-6 font-semibold font-[Frutiger] text-white w-[80%] mx-auto">
                   {biography?.title}
                 </h1>
               </div>
