@@ -13,7 +13,7 @@ export default function Poppularbiography(Poppularbiography) {
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${Poppularbiography.Poppularbiography?.banner})`,
           }}
-          className="bg-cover relative bg-center  rounded-lg  h-56 sm:h-72 w-full"
+          className="bg-cover relative bg-center  rounded-lg  h-56 sm:h-78 w-full"
         >
           <div className="p-4 absolute bottom-1 ">
             <h1 className=" font-semibold font-[Frutiger] text-white ">

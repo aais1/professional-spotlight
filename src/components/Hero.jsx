@@ -29,14 +29,15 @@ export function Hero() {
   if (loading) {
     return (
       <>
-        <div className="text-center mb-12 px-4 pt-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0d4f6f] mb-4">
-            Professionals Spotlight
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-4">
-          Where <strong>Experts</strong> Meet <strong>Recoginition.</strong> Meet our top <strong>Professional</strong>
+        <div className="text-center mb-12 px-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0d4f6f] mb-4">
+          Professionals Spotlight
+        </h1>
+        <p className="text-lg text-center md:text-xl text-gray-600 mb-2">
+          Where <strong>Experts</strong> Meet <strong>Recoginition</strong> 
         </p>
-        </div>
+        <p className="text-lg text-center md:text-xl text-gray-600 mb-2"> Meet our top Professionals</p>
+      </div>
         <div className="flex space-x-2 justify-center p-4">
           <SkeletonCard />
           <SkeletonCard />
@@ -58,9 +59,10 @@ export function Hero() {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0d4f6f] mb-4">
           Professionals Spotlight
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 mb-4">
-          Where <strong>Experts</strong> Meet <strong>Recoginition.</strong> Meet our top <strong>Professional</strong>
+        <p className="text-lg text-center md:text-xl text-gray-600 mb-2">
+          Where <strong>Experts</strong> Meet <strong>Recoginition</strong> 
         </p>
+        <p className="text-lg text-center md:text-xl text-gray-600 mb-2"> Meet our top Professionals</p>
       </div>
 
       <Marquee velocity={20} direction="rtl" resetAfterTries={3}>

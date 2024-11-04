@@ -49,7 +49,7 @@ export default function Navbar() {
   // Condition to show the back button or the navbar
   if (pathname.includes('leaders-journey') || pathname.includes('portfolio-hub')) {
     return (
-      <div className="pt-4 mx-4">
+      <div className="pt-4 mx-4 flex justify-between items-center">
       <button 
         onClick={() =>{
             navigate('/')
@@ -59,6 +59,9 @@ export default function Navbar() {
         >
         Back
       </button>
+      <div className="flex items-center space-x-4">
+          <Searchbox />
+        </div>
         </div>
     );
   }
