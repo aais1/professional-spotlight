@@ -42,11 +42,11 @@ export default function Bio(biographycard) {
   return (
     <>
       <Link to={`/biography/${slug}`} state={{ biography: biographycard }}>
-        <div className="p-2 border  rounded-md shadow-md h-96 w-72 flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-lg">
+        <div className="p-2 border  rounded-md shadow-md h-[25rem] w-72 flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-lg">
           <img
             src={banner}
             alt={title}
-            className="border rounded-md h-56 object-cover"
+            className="border rounded-md min-h-[278px] object-cover"
           />
           <div>
             <h1 className="font-semibold font-[Frutiger] p-1 text-lg text-[#212a31] hover:text-[#748d92]">
