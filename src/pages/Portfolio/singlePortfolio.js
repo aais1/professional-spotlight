@@ -13,6 +13,7 @@ import {
   HeadingLevel,
 } from "docx";
 import { saveAs } from "file-saver";
+import { toast } from "react-toastify";
 import { FaDownload } from "react-icons/fa";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -61,71 +62,71 @@ const fetchImage = async (url) => {
   }
 };
 
-const generateDocument = async () => {
-  let imageBuffer = null;
-  if (portfolios.banner) {
-    imageBuffer = await fetchImage(portfolios.banner);
-  }
+// const generateDocument = async () => {
+//   let imageBuffer = null;
+//   if (portfolios.banner) {
+//     imageBuffer = await fetchImage(portfolios.banner);
+//   }
 
-  const doc = new Document({
-    sections: [
-      {
-        properties: {},
-        children: [
-          (imageBuffer || portfolios.title) &&
-            new Paragraph({
-              children: [
-                imageBuffer &&
-                  new ImageRun({
-                    data: imageBuffer,
-                    transformation: {
-                      width: 100,
-                      height: 100,
-                    },
-                  }),
-                portfolios.title &&
-                  new TextRun({
-                    text: portfolios.title,
-                    bold: true,
-                    size: 32,
-                    break: 1, // Add a break to ensure the title appears next to the image
-                  }),
-              ].filter(Boolean), // Filter out any falsey values
-              alignment: AlignmentType.LEFT,
-            }),
-          portfolios.title &&
-            new Paragraph({
-              text: "Portfolio",
-              heading: HeadingLevel.TITLE,
-              alignment: AlignmentType.CENTER,
-            }),
-          portfolios.title &&
-            new Paragraph({
-              text: `${portfolios.title}`,
-              heading: HeadingLevel.HEADING_1,
-              alignment: AlignmentType.LEFT,
-            }),
-          portfolios.description &&
-            new Paragraph({
-              text: `${portfolios.description}`,
-              heading: HeadingLevel.HEADING_2,
-              alignment: AlignmentType.LEFT,
-            }),
-          portfolios.content &&
-            new Paragraph({
-              text: `${portfolios.content}`,
-              heading: HeadingLevel.HEADING_3,
-              alignment: AlignmentType.LEFT,
-            }),
-        ].filter(Boolean), // Filter out any falsey values
-      },
-    ],
-  });
+//   const doc = new Document({
+//     sections: [
+//       {
+//         properties: {},
+//         children: [
+//           (imageBuffer || portfolios.title) &&
+//             new Paragraph({
+//               children: [
+//                 imageBuffer &&
+//                   new ImageRun({
+//                     data: imageBuffer,
+//                     transformation: {
+//                       width: 100,
+//                       height: 100,
+//                     },
+//                   }),
+//                 portfolios.title &&
+//                   new TextRun({
+//                     text: portfolios.title,
+//                     bold: true,
+//                     size: 32,
+//                     break: 1, // Add a break to ensure the title appears next to the image
+//                   }),
+//               ].filter(Boolean), // Filter out any falsey values
+//               alignment: AlignmentType.LEFT,
+//             }),
+//           portfolios.title &&
+//             new Paragraph({
+//               text: "Portfolio",
+//               heading: HeadingLevel.TITLE,
+//               alignment: AlignmentType.CENTER,
+//             }),
+//           portfolios.title &&
+//             new Paragraph({
+//               text: `${portfolios.title}`,
+//               heading: HeadingLevel.HEADING_1,
+//               alignment: AlignmentType.LEFT,
+//             }),
+//           portfolios.description &&
+//             new Paragraph({
+//               text: `${portfolios.description}`,
+//               heading: HeadingLevel.HEADING_2,
+//               alignment: AlignmentType.LEFT,
+//             }),
+//           portfolios.content &&
+//             new Paragraph({
+//               text: `${portfolios.content}`,
+//               heading: HeadingLevel.HEADING_3,
+//               alignment: AlignmentType.LEFT,
+//             }),
+//         ].filter(Boolean), // Filter out any falsey values
+//       },
+//     ],
+//   });
 
-  Packer.toBlob(doc).then((blob) => {
-    saveAs(blob, `Portfolio-${portfolios.title}`);
-  });
-};
+//   Packer.toBlob(doc).then((blob) => {
+//     saveAs(blob, `Portfolio-${portfolios.title}`);
+//   });
+// };
 
   // ... (keep the fetchImage and generateDocument functions as they are)
 
@@ -184,11 +185,15 @@ const generateDocument = async () => {
         </div>
       </div>
       <button
-        onClick={generateDocument}
+        onClick={()=>{
+          navigator.clipboard.writeText(window.location.href).then(() => {
+            toast.success("Link copied ");
+          });
+        }}
         className="bg-[#124e66] hover:bg-[#1a6f8f] text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center"
       >
         <FaDownload className="mr-3" />
-        Download CV
+        Copy Portfolio Link
       </button>
     </div>
   );
