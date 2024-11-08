@@ -19,7 +19,7 @@ export default function PortfolioOfTheWeek({ card }) {
               <span className="bg-[#ffeb3b] px-1 sm:px-4 h0 py-0 sm:py-2 text-xs sm:text-sm font-sans inline-block mb-0 sm:mb-2">
                 {card.category}
               </span>
-              <h2 className="text-lg sm:text-xl font-bold italic text-gray-500 mb-2">From the diary of</h2>
+              <h2 className="text-lg sm:text-xl font-bold italic text-gray-500 mb-2">From the portfolio of</h2>
               <h2 className="text-xl sm:text-3xl font-bold">{card.title}</h2>
             </div>
           </div>
