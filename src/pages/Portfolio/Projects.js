@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import DOMPurify from "dompurify"; // Import DOMPurify for sanitizing HTML
+import ReactShadow from 'react-shadow';
 
 export default function Project({ project, keyaspects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,13 +80,18 @@ export default function Project({ project, keyaspects }) {
                       {proj.title}
                     </p>
                   </div> */}
-                  <div>
+                  <ReactShadow.div>
+                  <style>{`
+                * {
+                    color:#1a4f63;
+                }
+            `}</style>
                     <div
                       className="text-[#1a4f63] font-[calibri] text-sm sm:text-base overflow-y-auto"
                       style={{ scrollbarColor: 'transparent transparent', scrollbarWidth: 'thin' }}
                       dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(proj.description) }} // Sanitize and set HTML
                     />
-                  </div>
+                  </ReactShadow.div>
                   {/* <div>
                     <h3 className="text-[#1a4f63] font-[Frutiger] text-lg sm:text-2xl font-semibold mb-3">
                       Link
