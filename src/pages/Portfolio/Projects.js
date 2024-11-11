@@ -84,6 +84,7 @@ export default function Project({ project, keyaspects }) {
                   <style>{`
                 * {
                     color:#1a4f63;
+                    font-size: 0.5em; /* Scale text size to half */
                 }
             `}</style>
                     <div
