@@ -84,8 +84,11 @@ export default function Project({ project, keyaspects }) {
                   <style>{`
                 * {
                     color:#1a4f63;
-                    transform: scale(0.70);
+                
                 }
+                    h1,h2,h3,h4,h5,h6,span,p,div,li,ul,ol,blockquote,pre,code,table,th,td,form,label,button,input,textarea {
+                        transform: scale(0.70);
+                        }
             `}</style>
                     <div
                       className="text-[#1a4f63] font-[calibri] text-sm sm:text-base overflow-y-auto"
