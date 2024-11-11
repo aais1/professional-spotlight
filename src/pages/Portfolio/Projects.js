@@ -86,9 +86,14 @@ export default function Project({ project, keyaspects }) {
                     color:#1a4f63;
                 
                 }
-                    h1,h2,h3,h4,h5,h6,span,p,div,li,ul,ol,blockquote,pre,code,table,th,td,form,label,button,input,textarea {
-                        transform: scale(0.70);
-                        }
+                     h1 { font-size: 24px; } /* Assuming original is ~32px */
+    h2 { font-size: 20px; } /* Assuming original is ~26px */
+    h3 { font-size: 16px; } /* Assuming original is ~21px */
+    h4 { font-size: 14px; } /* Assuming original is ~18px */
+    h5 { font-size: 12px; } /* Assuming original is ~16px */
+    h6 { font-size: 10px; } /* Assuming original is ~13px */
+    p { font-size: 12px; }   /* Assuming original is ~16px */
+    span { font-size: 12px; } /* Assuming original is ~16px */
             `}</style>
                     <div
                       className="text-[#1a4f63] font-[calibri] text-sm sm:text-base overflow-y-auto"
