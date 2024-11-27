@@ -14,7 +14,8 @@ export default function BiographiesListingPage() {
   const [isChecked, setIsChecked] = useState(false);
 
   const [isLoadingBiographies, setIsLoadingBiographies] = useState(false);
-  const [isLoadingPopularBiographies, setIsLoadingPopularBiographies] = useState(false);
+  const [isLoadingPopularBiographies, setIsLoadingPopularBiographies] =
+    useState(false);
   const [isLoadingSubscription, setIsLoadingSubscription] = useState(false);
 
   const categories = [
@@ -23,19 +24,21 @@ export default function BiographiesListingPage() {
     "CEO",
     "Presidents",
     "Founders",
-    "Executives"
+    "Executives",
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
 
   const FetchPageData = async () => {
     setIsLoadingBiographies(true);
     try {
       const response = await sendRequest("GET", "/user/allbiographies");
       console.log("biographies response ", response.biographies);
-      const sortedBiographies = (response?.biographies || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const sortedBiographies = (response?.biographies || []).sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
       setBiographies(sortedBiographies);
     } catch (error) {
       console.error("Error fetching biographies:", error);
@@ -53,7 +56,9 @@ export default function BiographiesListingPage() {
       setPopularBiographies(response?.biographies || []);
     } catch (error) {
       console.error("Error fetching popular biographies:", error);
-      toast.error("Failed to fetch popular biographies. Please try again later.");
+      toast.error(
+        "Failed to fetch popular biographies. Please try again later."
+      );
     } finally {
       setIsLoadingPopularBiographies(false);
     }
@@ -64,11 +69,14 @@ export default function BiographiesListingPage() {
     FetchPopularData();
   }, []);
 
-
   //gen perma links
   useEffect(() => {
-    window.history.replaceState(selectedCategory, "Biographies", `/leaders-journey/${selectedCategory}`);
-  }, [selectedCategory])
+    window.history.replaceState(
+      selectedCategory,
+      "Biographies",
+      `/leaders-journey/${selectedCategory}`
+    );
+  }, [selectedCategory]);
 
   const filteredBiographies =
     selectedCategory === "all"
@@ -129,11 +137,11 @@ export default function BiographiesListingPage() {
   return (
     <>
       <ToastContainer />
-      {(isLoadingBiographies || isLoadingPopularBiographies) && (
+      {/* {(isLoadingBiographies || isLoadingPopularBiographies) && (
         <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#124e66]"></div>
         </div>
-      )}
+      )} */}
 
       <div className="bg-white relative pt-1 p-2 space-y-4">
         <h1 className="text-2xl sm:text-6xl font-[Frutiger] font-semibold text-center text-[#124e66]">
@@ -141,7 +149,12 @@ export default function BiographiesListingPage() {
         </h1>
         <div
           className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none", whiteSpace: "nowrap", overflowX: "scroll" }}
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            whiteSpace: "nowrap",
+            overflowX: "scroll",
+          }}
         >
           <style>{`
             div::-webkit-scrollbar {
@@ -150,23 +163,23 @@ export default function BiographiesListingPage() {
           `}</style>
           {categories.map((category) => (
             <button
-            key={category}
-            className={`p-2 m-1  whitespace-nowrap ${
-              selectedCategory === category ? "bg-white md:px-4 rounded-sm  font-semibold text-black" : "text-white"
-            }
+              key={category}
+              className={`p-2 m-1  whitespace-nowrap ${
+                selectedCategory === category
+                  ? "bg-white md:px-4 rounded-sm  font-semibold text-black"
+                  : "text-white"
+              }
             
             `}
-            onClick={() => {
-              setSelectedCategory(category);
-              setCurrentPage(1);
-            }}
+              onClick={() => {
+                setSelectedCategory(category);
+                setCurrentPage(1);
+              }}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}{
-              category!=="all" && "Biographies"
-            }
+              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+              {category !== "all" && "Biographies"}
             </button>
           ))}
-
         </div>
       </div>
 
@@ -190,7 +203,9 @@ export default function BiographiesListingPage() {
               </Link>
             ))
           ) : (
-            <p className="text-center text-gray-500">No biographies available.</p>
+            <p className="text-center text-gray-500">
+              No biographies available.
+            </p>
           )}
 
           <div className="flex justify-center items-center space-x-2 mt-4">
@@ -210,7 +225,9 @@ export default function BiographiesListingPage() {
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
               className={`${
-                currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
               } text-xs sm:text-sm bg-gray-200 p-2 m-1 hover:bg-gray-300 rounded-md`}
             >
               Next
@@ -267,44 +284,50 @@ export default function BiographiesListingPage() {
                 />
                 <p className="text-xs">
                   I have read{" "}
-                  <a href="/terms-and-conditions" className="text-blue-500 font-[Calibri] underline">
+                  <a
+                    href="/terms-and-conditions"
+                    className="text-blue-500 font-[Calibri] underline"
+                  >
                     Privacy policy and terms of condition
                   </a>
                 </p>
               </div>
               <div className="mt-12">
                 <div className="p-2 space-y-4">
-                  <h2 className="text-white inline px-2 py-1 rounded-lg bg-[#124e66] font-semibold text-start border text-lg cursor-pointer">Popular</h2>
+                  <h2 className="text-white inline px-2 py-1 rounded-lg bg-[#124e66] font-semibold text-start border text-lg cursor-pointer">
+                    Popular
+                  </h2>
                   <div className="border border-[#124e66] w-full my-2"></div>
                   <div className="space-y-4">
-                    {popularBiographies?.map((bio) =>
-                    { const [name,title]= bio.title.split(':')
+                    {popularBiographies?.map((bio) => {
+                      const [name, title] = bio.title.split(":");
                       return (
-                      <RouterLink
-                        key={bio._id}
-                        to={{
-                          pathname: `/biography/${bio.slug}`,
-                        }}
-                        state={{ biography: bio, popularBiographies }}
-                        className="flex p-1 bg-gray-100 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
-                      >
-                        <div className="min-w-[95px] h-24">
-                          <img
-                            src={bio.banner}
-                            alt={bio.title}
-                            className="w-full h-full object-cover rounded-md"
-                          />
-                        </div>
-                        <div className="ml-4">
-                          <p className=" text-[#124e66] font-semibold line-clamp-1">
-                            {name}
-                          </p>
-                          <p className=" text-gray-500 text-sm font-semibold break-all line-clamp-2">
-                            {title.slice(0,100)}
-                          </p>
-                        </div>
-                      </RouterLink>
-                    )})}
+                        <RouterLink
+                          key={bio._id}
+                          to={{
+                            pathname: `/biography/${bio.slug}`,
+                          }}
+                          state={{ biography: bio, popularBiographies }}
+                          className="flex p-1 bg-gray-100 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
+                        >
+                          <div className="min-w-[95px] h-24">
+                            <img
+                              src={bio.banner}
+                              alt={bio.title}
+                              className="w-full h-full object-cover rounded-md"
+                            />
+                          </div>
+                          <div className="ml-4">
+                            <p className=" text-[#124e66] font-semibold line-clamp-1">
+                              {name}
+                            </p>
+                            <p className=" text-gray-500 text-sm font-semibold break-all line-clamp-2">
+                              {title.slice(0, 100)}
+                            </p>
+                          </div>
+                        </RouterLink>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

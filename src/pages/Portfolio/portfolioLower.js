@@ -5,7 +5,6 @@ import getApi from "../../utils/sendrequest";
 import { FaArrowUp } from "react-icons/fa";
 import PortfolioHeader from "./portfolioHeader";
 
-
 const categories = [
   "All",
   "Healthcare",
@@ -34,10 +33,11 @@ export default function Portfolio() {
   const [loading, setLoading] = useState(true); // Loading state
   const [showScroll, setShowScroll] = useState(false); // State to show/hide scroll button
 
-     //gen perma links
-     useEffect(()=>{
-      window.history.pushState(selectedCategory, "Portfolio", `/leaders-journey/${selectedCategory}`);
-    },[selectedCategory])
+  //gen perma links
+  useEffect(() => {
+    // commented it bcz it was generating issue and was taking us back to biographies page
+    // window.history.pushState(selectedCategory, "Portfolio", `/leaders-journey/${selectedCategory}`);
+  }, [selectedCategory]);
 
   const FetchData = async () => {
     setLoading(true);
@@ -56,7 +56,9 @@ export default function Portfolio() {
       setFilteredPortfolios(portfolios);
     } else {
       setFilteredPortfolios(
-        portfolios.filter((portfolio) => portfolio.category === selectedCategory)
+        portfolios.filter(
+          (portfolio) => portfolio.category === selectedCategory
+        )
       );
     }
   }, [selectedCategory, portfolios]);
@@ -82,45 +84,54 @@ export default function Portfolio() {
 
   return (
     <>
-    
       {/* Categories */}
       <h2 className="text-2xl sm:text-6xl font-[Frutiger] mt-4 font-semibold text-center text-[#124e66]">
         Related Portfolios
       </h2>
       <div
-          className="space-x-3 mb-4 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none", whiteSpace: "nowrap", overflowX: "scroll" }}
-        >
-          <style>{`
+        className="space-x-3 mb-4 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          whiteSpace: "nowrap",
+          overflowX: "scroll",
+        }}
+      >
+        <style>{`
             div::-webkit-scrollbar {
               display: none;
             }
           `}</style>
-          {categories.map((category) => (
-            <button
+        {categories.map((category) => (
+          <button
             key={category}
             className={`p-2 m-1  whitespace-nowrap ${
-              selectedCategory === category ? "bg-white md:px-4 rounded-sm  font-semibold text-black" : "text-white"
+              selectedCategory === category
+                ? "bg-white md:px-4 rounded-sm  font-semibold text-black"
+                : "text-white"
             }
             
             `}
             onClick={() => {
               setSelectedCategory(category);
             }}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}{
-              category!=="All" && "Portfolios"
-            }
-            </button>
-          ))}
-
-        </div>
-        
-
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+            {category !== "All" && "Portfolios"}
+          </button>
+        ))}
+      </div>
+      {loading ? (
+        // Render skeletons during loading
+        Array.from({ length: 16 }).map((_, index) => (
+          <PortfolioSkeleton key={index} />
+        ))
+      ) : (
         <PortfolioHeader />
+      )}
 
       {/* Portfolio Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-10 py-4  md:py-8">
+      <div className="bg-[#E8ECF5] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:px-10 py-4  md:py-8">
         {loading ? (
           // Render skeletons during loading
           Array.from({ length: 6 }).map((_, index) => (
@@ -131,7 +142,9 @@ export default function Portfolio() {
             <Portfoliocard key={portfolio._id} portfoliocard={portfolio} />
           ))
         ) : (
-          <p className="text-center text-gray-500 w-full col-span-full">No portfolio found</p>
+          <p className="text-center text-gray-500 w-full col-span-full">
+            No Resume found
+          </p>
         )}
       </div>
 
