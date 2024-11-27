@@ -9,7 +9,8 @@ export default function Bio(biographycard) {
   const category = biographycard.Biographycard.category;
   const description = biographycard.Biographycard.description.substring(0, 70);
   const date = new Date(biographycard.Biographycard.date);
-  const time = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+  const time =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   const slug = biographycard.Biographycard.slug;
 
   // Function to truncate HTML content while preserving tags
@@ -56,12 +57,12 @@ export default function Bio(biographycard) {
               {parse(shortDescription)}
             </div> */}
           </div>
-          <p className="text-sm font-bold font-[calibri] text-[#124e66]">
+          {/* <p className="text-sm font-bold font-[calibri] text-[#124e66]">
             <span className="font-[calibri] font-medium text-xs  text-[#124e66] p-1">
               Uploaded on
             </span>{" "}
             {time}
-          </p>
+          </p> */}
         </div>
       </Link>
     </>

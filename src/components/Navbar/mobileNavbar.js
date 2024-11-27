@@ -6,7 +6,11 @@ import Subscription from "../Subscription/subscription"; // Import the Subscript
 import { Bold } from "lucide-react";
 import Logo from "./newwlogo.png";
 
-export default function MobileNavbar({ isOpen, toggleMobileNavbar, isAuthenticated }) {
+export default function MobileNavbar({
+  isOpen,
+  toggleMobileNavbar,
+  isAuthenticated,
+}) {
   const [isSubscriptionOpen, setIsSubscriptionOpen] = useState(false); // State to manage subscription overlay
 
   const handleLogout = () => {
@@ -23,7 +27,7 @@ export default function MobileNavbar({ isOpen, toggleMobileNavbar, isAuthenticat
   };
 
   return (
-    <div className="sm:hidden bg-[#124e66]">
+    <div className="lg:hidden bg-[#124e66]">
       {/* Navbar Header */}
       <div className="flex items-center justify-center space-x-2 p-2 ">
         <button onClick={toggleMobileNavbar} className="text-lg">
@@ -39,10 +43,41 @@ export default function MobileNavbar({ isOpen, toggleMobileNavbar, isAuthenticat
       {isOpen && (
         <div className="fixed top-0 left-0 w-3/5 h-full bg-white p-4 space-y-2 z-50">
           {/* Menu Links */}
-          <RouterLink to="/portfolio-hub" className="py-2 font-[Cambria] text-center block" onClick={toggleMobileNavbar}>Portfolios</RouterLink>
-          <RouterLink to="/leaders-journey" className="py-2 font-[Cambria] text-center block" onClick={toggleMobileNavbar}>Leaders journey</RouterLink>
-          <RouterLink to="/reviews" className="py-2 font-[Cambria] text-center block" onClick={toggleMobileNavbar}>Reviews</RouterLink>
-          <RouterLink to="/about-us" className="py-2 font-[Cambria] text-center block" onClick={toggleMobileNavbar}>About us</RouterLink>
+          <RouterLink
+            to="/portfolio-hub"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            Portfolios
+          </RouterLink>
+          <RouterLink
+            to="/leaders-journey"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            Leaders journey
+          </RouterLink>
+          <RouterLink
+            to="/reviews"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            Reviews
+          </RouterLink>
+          <RouterLink
+            to="/about-us"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            About us
+          </RouterLink>
+          <RouterLink
+            to="/services"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            Services
+          </RouterLink>
 
           {/* Authentication Buttons */}
           <button
