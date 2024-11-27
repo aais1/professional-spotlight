@@ -28,6 +28,7 @@ export default function Home() {
       setBiographies(homeData?.biographies || []);
       setPortfolioOfTheDay(dayData?.portfolio || null);
       setBiographyOfTheDay(dayData?.biography || null);
+      console.log(homeData)
       setLoading(false);
     } catch (err) {
       console.error("Error fetching data:", err);
