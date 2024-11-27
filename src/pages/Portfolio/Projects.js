@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import DOMPurify from "dompurify"; // Import DOMPurify for sanitizing HTML
+import ReactShadow from 'react-shadow';
 
 export default function Project({ project, keyaspects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,6 +26,8 @@ export default function Project({ project, keyaspects }) {
       }, 500);
     }
   };
+
+  console.log(project)
 
   return (
     <div className="bg-[#1a4f63] w-full min-h-[600px] rounded-lg p-1 sm:p-8 relative">
@@ -59,7 +62,7 @@ export default function Project({ project, keyaspects }) {
           {currentIndex < project.length ? (
             project.map((proj, index) => (
               <div
-                key={proj.id}
+                key={proj._id}
                 style={{
                   opacity: index === currentIndex && fade ? 1 : 0,
                   transition: "opacity 0.5s ease-in-out",
@@ -68,29 +71,37 @@ export default function Project({ project, keyaspects }) {
                   index === currentIndex ? "z-10" : "z-0"
                 }`}
               >
-                <h2 className="text-[#1a4f63] font-[Frutiger] text-xl sm:text-3xl font-bold mb-6 border-b-2 border-[#1a4f63] pb-3">
-                  Project Details
-                </h2>
                 <div className="space-y-6">
-                  <div>
+                  {/* <div>
                     <h3 className="text-[#1a4f63] font-[Frutiger] text-lg sm:text-xl font-semibold mb-3">
                       Project Title
                     </h3>
                     <p className="text-[#1a4f63] font-[calibri] font text-sm sm:text-lg">
                       {proj.title}
                     </p>
-                  </div>
-                  <div>
-                    <h3 className="text-[#1a4f63] font-[Frutiger] text-lg sm:text-2xl font-semibold mb-3">
-                      Description
-                    </h3>
+                  </div> */}
+                  <ReactShadow.div>
+                  <style>{`
+                * {
+                    color:#1a4f63;
+                
+                }
+                     h1 { font-size: 24px; } /* Assuming original is ~32px */
+    h2 { font-size: 20px; } /* Assuming original is ~26px */
+    h3 { font-size: 16px; } /* Assuming original is ~21px */
+    h4 { font-size: 14px; } /* Assuming original is ~18px */
+    h5 { font-size: 12px; } /* Assuming original is ~16px */
+    h6 { font-size: 10px; } /* Assuming original is ~13px */
+    p { font-size: 12px; }   /* Assuming original is ~16px */
+    span { font-size: 12px; } /* Assuming original is ~16px */
+            `}</style>
                     <div
                       className="text-[#1a4f63] font-[calibri] text-sm sm:text-base overflow-y-auto"
                       style={{ scrollbarColor: 'transparent transparent', scrollbarWidth: 'thin' }}
                       dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(proj.description) }} // Sanitize and set HTML
                     />
-                  </div>
-                  <div>
+                  </ReactShadow.div>
+                  {/* <div>
                     <h3 className="text-[#1a4f63] font-[Frutiger] text-lg sm:text-2xl font-semibold mb-3">
                       Link
                     </h3>
@@ -102,7 +113,7 @@ export default function Project({ project, keyaspects }) {
                     >
                       {proj.link}
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))
