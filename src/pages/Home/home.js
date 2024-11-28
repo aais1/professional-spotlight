@@ -28,7 +28,7 @@ export default function Home() {
       setBiographies(homeData?.biographies || []);
       setPortfolioOfTheDay(dayData?.portfolio || null);
       setBiographyOfTheDay(dayData?.biography || null);
-      console.log(homeData)
+      console.log(homeData);
       setLoading(false);
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -129,7 +129,7 @@ export default function Home() {
             </p>
           </RouterLink>
         </div>
-        <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory  items-center">
+        {/* <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory  items-center">
           {loading
             ? Array.from({ length: 5 }).map((_, index) => (
                 <SkeletonCard key={index} />
@@ -139,7 +139,7 @@ export default function Home() {
                   <Portfoliocard portfoliocard={portfolio} />
                 </div>
               ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

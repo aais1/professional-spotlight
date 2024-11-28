@@ -175,18 +175,15 @@ export default function BiographyPage() {
 
       <div className="min-h-screen bg-white">
         <div className="relative space-y-2 bg-center mt-5 sm:mt-10 px-4 sm:px-10 rounded-lg w-full">
-          <div
-            // style={{ backgroundImage: `url(${biographyBackground})` }}
-            className="relative w-full    "
-          >
+          <div className="relative w-full    ">
             <div
               style={{
                 backgroundImage: `url(${biographyBackground})`,
-                backgroundSize: "cover", // Ensures the image covers the entire area
-                backgroundPosition: "center", // Centers the image
+                backgroundSize: "100% 100%",
+                backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
               }}
-              className="h-[24rem] md:h-[38rem]  w-full overflow-hidden"
+              className="h-[24rem] md:h-[38rem]  w-full overflow-hidden relative"
             >
               <img
                 className="object-fill w-full lg:min-w-[48%] lg:max-w-[49.5%] mx-auto  h-full bg-center "
