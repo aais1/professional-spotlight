@@ -123,11 +123,11 @@ export default function Home() {
   <h1 className="line-block p-2 text-left font-bold italic text-2xl text-[#124e66]">Latest</h1> {" "}
                   <h1 className="bg-[#ffeb3b] inline-block p-1 md:p-2text-left font-bold italic text-2xl text-[#124e66]">Portfolios</h1>
           </div> */}
-          <RouterLink to="/portfolio-hub">
+          {/* <RouterLink to="/portfolio-hub">
             <p className="hover:underline rounded-md text-white px-2 py-1  md:px-4 md:py-2 bg-[#124e66]">
               See More
             </p>
-          </RouterLink>
+          </RouterLink> */}
         </div>
         {/* <div className="flex overflow-x-auto space-x-4 scrollbar-hide snap-x snap-mandatory  items-center">
           {loading
