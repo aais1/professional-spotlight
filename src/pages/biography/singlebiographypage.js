@@ -361,7 +361,7 @@ export default function BiographyPage() {
                                 {name}
                               </h3>
                               <p className="text-sm text-gray-600 line-clamp-2">
-                                {title.slice(0, 200)}
+                                {title?.slice(0, 200)}
                               </p>
                             </div>
                           </div>
