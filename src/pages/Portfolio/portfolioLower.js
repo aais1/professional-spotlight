@@ -116,7 +116,7 @@ export default function Portfolio() {
               setSelectedCategory(category);
             }}
           >
-            {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+            {category?.charAt(0).toUpperCase() + category?.slice(1)}{" "}
             {category !== "All" && "Portfolios"}
           </button>
         ))}

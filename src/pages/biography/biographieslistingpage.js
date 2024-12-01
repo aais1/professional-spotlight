@@ -88,7 +88,7 @@ export default function BiographiesListingPage() {
 
   const totalPages = Math.ceil(filteredBiographies.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedBiographies = filteredBiographies.slice(
+  const paginatedBiographies = filteredBiographies?.slice(
     startIndex,
     startIndex + itemsPerPage
   );
@@ -176,7 +176,7 @@ export default function BiographiesListingPage() {
                 setCurrentPage(1);
               }}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}{" "}
+              {category?.charAt(0).toUpperCase() + category?.slice(1)}{" "}
               {category !== "all" && "Biographies"}
             </button>
           ))}
@@ -322,7 +322,7 @@ export default function BiographiesListingPage() {
                               {name}
                             </p>
                             <p className=" text-gray-500 text-sm font-semibold break-all line-clamp-2">
-                              {title.slice(0, 100)}
+                              {title?.slice(0, 100)}
                             </p>
                           </div>
                         </RouterLink>
