@@ -24,7 +24,7 @@ export default function BiographiesListingPage() {
     "CEO",
     "Presidents",
     "Founders",
-    "Executives",
+    "Executive",
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("all");
