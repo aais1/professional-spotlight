@@ -6,7 +6,7 @@ async function sendRequest(method,url,body = null) {
   try {
     const response = await axios({
       method: method,
-      url:"http://localhost:3001"+url,
+      url:"https://professional-spotlight-backend-beta.vercel.app"+url,
 
       headers: {
         "Content-Type": "application/json",
