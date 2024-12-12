@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Biographycard from "../../components/Biographies/biographycard";
 import Poppularbiography from "../../components/Biographies/poppularbiography";
 import sendRequest from "../../utils/sendrequest";
-import { Link as RouterLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { Link as RouterLink } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function BiographiesListingPage() {
@@ -24,22 +24,35 @@ export default function BiographiesListingPage() {
     "CEO",
     "Presidents",
     "Founders",
-    "Executive",
+    "Executives",
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 4;
 
+  // Fetch the page data (biographies)
   const FetchPageData = async () => {
     setIsLoadingBiographies(true);
     try {
-      const response = await sendRequest("GET", "/user/allbiographies");
-      console.log("biographies response ", response.biographies);
+      // Build the query string with pagination and category filters
+      const queryParams = new URLSearchParams({
+        page: currentPage,
+        limit: itemsPerPage,
+        category: selectedCategory,
+      }).toString();
+
+      // Send the GET request with query parameters
+      const response = await sendRequest("GET", `/user/allbiographies?${queryParams}`);
+      
+      // Sort the biographies by the date (newest first)
       const sortedBiographies = (response?.biographies || []).sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
+
       setBiographies(sortedBiographies);
+      setTotalPages(response.totalPages);  // Set the total pages from the backend
     } catch (error) {
       console.error("Error fetching biographies:", error);
       toast.error("Failed to fetch biographies. Please try again later.");
@@ -48,28 +61,29 @@ export default function BiographiesListingPage() {
     }
   };
 
+  // Fetch popular biographies
   const FetchPopularData = async () => {
     setIsLoadingPopularBiographies(true);
     try {
       const response = await sendRequest("GET", "/user/popularbiographies");
-      console.log("popular ", response);
       setPopularBiographies(response?.biographies || []);
     } catch (error) {
       console.error("Error fetching popular biographies:", error);
-      toast.error(
-        "Failed to fetch popular biographies. Please try again later."
-      );
+      toast.error("Failed to fetch popular biographies. Please try again later.");
     } finally {
       setIsLoadingPopularBiographies(false);
     }
   };
 
+  useEffect(()=>{
+    FetchPopularData();
+  },[])
+
   useEffect(() => {
     FetchPageData();
-    FetchPopularData();
-  }, []);
+  }, [currentPage, selectedCategory]);
 
-  //gen perma links
+  // Update URL with the selected category
   useEffect(() => {
     window.history.replaceState(
       selectedCategory,
@@ -78,21 +92,7 @@ export default function BiographiesListingPage() {
     );
   }, [selectedCategory]);
 
-  const filteredBiographies =
-    selectedCategory === "all"
-      ? biographies
-      : biographies.filter(
-          (biography) =>
-            biography.category.toLowerCase() === selectedCategory.toLowerCase()
-        );
-
-  const totalPages = Math.ceil(filteredBiographies.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedBiographies = filteredBiographies?.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
-
+  // Handle pagination
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -105,6 +105,7 @@ export default function BiographiesListingPage() {
     }
   };
 
+  // Handle subscription form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -118,7 +119,6 @@ export default function BiographiesListingPage() {
       const response = await sendRequest("POST", "/user/biography/subscribe", {
         email: email,
       });
-      console.log("Subscription successful:", response);
       if (response.message === "Subscribed successfully") {
         toast.success("Subscribed successfully!");
         setEmail("");
@@ -127,7 +127,6 @@ export default function BiographiesListingPage() {
         toast.warning("You may have already subscribed with this email!");
       }
     } catch (error) {
-      console.error("Error subscribing to newsletter:", error);
       toast.error("Failed to subscribe. Please try again.");
     } finally {
       setIsLoadingSubscription(false);
@@ -137,40 +136,21 @@ export default function BiographiesListingPage() {
   return (
     <>
       <ToastContainer />
-      {/* {(isLoadingBiographies || isLoadingPopularBiographies) && (
-        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#124e66]"></div>
-        </div>
-      )} */}
-
+      
       <div className="bg-white relative pt-1 p-2 space-y-4">
         <h1 className="text-2xl sm:text-6xl font-[Frutiger] font-semibold text-center text-[#124e66]">
           Biographies
         </h1>
-        <div
-          className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66] "
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            whiteSpace: "nowrap",
-            overflowX: "scroll",
-          }}
-        >
-          <style>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
+
+        <div className="space-x-3 mt-4 sm:space-x-5 flex overflow-x-auto sm:justify-center w-full md:w-full md:mx-auto bg-[#124e66]">
           {categories.map((category) => (
             <button
               key={category}
               className={`p-2 m-1  whitespace-nowrap ${
                 selectedCategory === category
-                  ? "bg-white md:px-4 rounded-sm  font-semibold text-black"
+                  ? "bg-white md:px-4 rounded-sm font-semibold text-black"
                   : "text-white"
-              }
-            
-            `}
+              }`}
               onClick={() => {
                 setSelectedCategory(category);
                 setCurrentPage(1);
@@ -189,8 +169,8 @@ export default function BiographiesListingPage() {
             <div className="flex justify-center items-center w-full h-64">
               <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-[#124e66]"></div>
             </div>
-          ) : paginatedBiographies.length > 0 ? (
-            paginatedBiographies.map((biography) => (
+          ) : biographies.length > 0 ? (
+            biographies.map((biography) => (
               <Link
                 key={biography._id}
                 to={{
@@ -203,32 +183,22 @@ export default function BiographiesListingPage() {
               </Link>
             ))
           ) : (
-            <p className="text-center text-gray-500">
-              No biographies available.
-            </p>
+            <p className="text-center text-gray-500">No biographies available.</p>
           )}
 
           <div className="flex justify-center items-center space-x-2 mt-4">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className={`${
-                currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-              } bg-gray-200 text-xs sm:text-sm p-2 m-1 hover:bg-gray-300 rounded-md`}
+              className={`${currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""} bg-gray-200 text-xs sm:text-sm p-2 m-1 hover:bg-gray-300 rounded-md`}
             >
               Previous
             </button>
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
+            <span>Page {currentPage} of {totalPages}</span>
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className={`${
-                currentPage === totalPages
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              } text-xs sm:text-sm bg-gray-200 p-2 m-1 hover:bg-gray-300 rounded-md`}
+              className={`${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""} text-xs sm:text-sm bg-gray-200 p-2 m-1 hover:bg-gray-300 rounded-md`}
             >
               Next
             </button>
@@ -248,57 +218,43 @@ export default function BiographiesListingPage() {
             )}
             <div className="grid space-y-1 justify-center mt-4">
               <h2 className="text-[#124e66]">Subscribe to our newsletter</h2>
-              <form onSubmit={handleSubmit} className="w-full space-y-4">
+              <form onSubmit={handleSubmit} className="w-full flex flex-col">
                 <input
                   type="email"
-                  placeholder="Enter your email"
-                  className="border p-2 w-full rounded-md"
+                  placeholder="Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="p-2 border rounded mb-2"
                   required
-                  disabled={isLoadingSubscription}
                 />
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={() => setIsChecked(!isChecked)}
+                    className="mr-2"
+                  />
+                  <span>
+                    I agree to the{" "}
+                    <a href="/privacy-policy" className="text-blue-500">
+                      Privacy Policy
+                    </a>{" "}
+                    and{" "}
+                    <a href="/terms" className="text-blue-500">
+                      Terms of Service
+                    </a>
+                  </span>
+                </div>
                 <button
                   type="submit"
-                  className={`border rounded-md w-full h-10 hover:shadow-lg bg-[#124e66] text-white mt-2 ${
-                    isLoadingSubscription ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
                   disabled={isLoadingSubscription}
+                  className="mt-4 bg-[#124e66] text-white p-2 rounded"
                 >
-                  {isLoadingSubscription ? (
-                    <div className="flex justify-center items-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
-                    </div>
-                  ) : (
-                    "Subscribe"
-                  )}
+                  Subscribe
                 </button>
               </form>
-              <div className="flex items-center space-x-2 pt-2">
-                <input
-                  type="checkbox"
-                  className="border"
-                  checked={isChecked}
-                  onChange={(e) => setIsChecked(e.target.checked)}
-                  disabled={isLoadingSubscription}
-                />
-                <p className="text-xs">
-                  I have read{" "}
-                  <a
-                    href="/terms-and-conditions"
-                    className="text-blue-500 font-[Calibri] underline"
-                  >
-                    Privacy policy and terms of condition
-                  </a>
-                </p>
-              </div>
-              <div className="mt-12">
-                <div className="p-2 space-y-4">
-                  <h2 className="text-white inline px-2 py-1 rounded-lg bg-[#124e66] font-semibold text-start border text-lg cursor-pointer">
-                    Popular
-                  </h2>
-                  <div className="border border-[#124e66] w-full my-2"></div>
-                  <div className="space-y-4">
+            </div>
+            <div className="space-y-4">
                     {popularBiographies?.map((bio) => {
                       const [name, title] = bio.title.split(":");
                       return (
@@ -329,9 +285,6 @@ export default function BiographiesListingPage() {
                       );
                     })}
                   </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Poppularbiography(Poppularbiography) {
   console.log("pp", Poppularbiography);
-  const date = new Date(Poppularbiography.Poppularbiography.date);
+  const date = new Date(Poppularbiography?.Poppularbiography?.date);
   const time = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  const slug = Poppularbiography.Poppularbiography.slug;
+  const slug = Poppularbiography?.Poppularbiography?.slug;
   return (
     <>
       <Link to={`/biography/${slug}`}>
