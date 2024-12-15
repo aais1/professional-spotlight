@@ -33,15 +33,6 @@ function App() {
         <Route path="/portfolio-hub/Engineering" element={<Portfolio />} />
         <Route path="/portfolio-hub/Business" element={<Portfolio />} />
         <Route path="/portfolio-hub/Journalism" element={<Portfolio />} />
-        <Route path="/leaders-journey/Healthcare" element={<Portfolio />} />
-        <Route path="/leaders-journey/Media" element={<Portfolio />} />
-        <Route path="/leaders-journey/Art" element={<Portfolio />} />
-        <Route path="/leaders-journey/All" element={<Portfolio />} />
-
-        <Route path="/leaders-journey/Engineering" element={<Portfolio />} />
-
-        <Route path="/leaders-journey/Business" element={<Portfolio />} />
-        <Route path="/leaders-journey/Journalism" element={<Portfolio />} />
         <Route path="/portfolio/:slug" element={<SinglePortfolio />} />
         <Route path="/leaders-journey" element={<Biographies />} />
         <Route path="/leaders-journey/all" element={<Biographies />} />
