@@ -352,7 +352,7 @@ export default function BiographyPage() {
                         >
                           <div className="flex space-x-4">
                             <img
-                              className="h-[115px] min-w-30 object-cover rounded-lg"
+                              className="h-[115px] max-h-[115px] min-w-30 max-w-30 object-cover rounded-lg"
                               src={bio.banner}
                               alt={bio.title}
                             />
