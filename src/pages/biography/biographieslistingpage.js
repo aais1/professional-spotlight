@@ -269,7 +269,7 @@ export default function BiographiesListingPage() {
                           state={{ biography: bio, popularBiographies }}
                           className="flex p-1 bg-gray-100 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-300"
                         >
-                          <div className="min-w-[95px] h-24">
+                          <div className="min-w-[95px] max-w-[95px] h-24 max-h-24">
                             <img
                               src={bio.banner}
                               alt={bio.title}
