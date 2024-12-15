@@ -85,12 +85,15 @@ export default function BiographiesListingPage() {
 
   // Update URL with the selected category
   useEffect(() => {
-    window.history.replaceState(
-      selectedCategory,
-      "Biographies",
-      `/leaders-journey/${selectedCategory}`
-    );
+    if (selectedCategory) {
+      window.history.replaceState(
+        null, // No state object is needed here, as it's not used
+        "Biographies", // The title for the history entry
+        `/leaders-journey/${selectedCategory}` // The new URL
+      );
+    }
   }, [selectedCategory]);
+  
 
   // Handle pagination
   const handlePreviousPage = () => {
