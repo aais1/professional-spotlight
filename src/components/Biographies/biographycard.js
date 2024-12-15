@@ -35,8 +35,8 @@ export default function Biographycard(biographycard) {
 
     return (
         <div className="p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out w-full sm:flex justify-between bg-white border rounded-md">
-            <div className="flex-shrink-0 w-full sm:w-2/5 h-64 sm:h-72">
-                <img src={banner} alt={title} className="w-full h-full object-cover border rounded-md" />
+            <div className="flex-shrink-0 w-full sm:w-2/5 h-72 sm:h-72">
+                <img src={banner} alt={title} className="w-full h-full object-fill border rounded-md" />
             </div>
             <div className="sm:pl-6 pt-4 sm:pt-0 w-full">
                 <h1 className="font-semibold font-[Frutiger] text-xl sm:text-3xl text-[#124e66] transition-colors duration-300 hover:text-[#0e3548] cursor-pointer">
