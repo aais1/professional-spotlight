@@ -17,6 +17,8 @@ import Review from "./pages/Reviews/index";
 import About from "./pages/about/about";
 import TestBiography from "./pages/biography/testbiography";
 import Services from "./pages/Services/Services";
+import ContactUs from "./pages/ContactUs";
+
 function App() {
   const [selectedBiography, setSelectedBiography] = useState(null);
   return (
@@ -51,6 +53,7 @@ function App() {
         <Route path="/reviews" element={<Review />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/contactus" element={<ContactUs />} />
         <Route
           path="/biography/test-biography/:slug"
           element={<TestBiography />}

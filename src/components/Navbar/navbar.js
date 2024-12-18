@@ -48,6 +48,7 @@ export default function Navbar() {
     { name: "Reviews", link: "/reviews" },
     { name: "About us", link: "/about-us" },
     { name: "Services", link: "/services" },
+    { name: "Contact Us", link: "/contactus" },
   ];
 
   // Condition to show the back button or the navbar
