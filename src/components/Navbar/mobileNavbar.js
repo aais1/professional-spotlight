@@ -79,6 +79,15 @@ export default function MobileNavbar({
             Services
           </RouterLink>
 
+          <RouterLink
+            to="/contactus"
+            className="py-2 font-[Cambria] text-center block"
+            onClick={toggleMobileNavbar}
+          >
+            Contact Us
+          </RouterLink>
+
+
           {/* Authentication Buttons */}
           <button
             className="text-sm text-white bg-[#124e66] px-4 py-2 rounded mt-2 w-full block text-center"
