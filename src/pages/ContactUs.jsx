@@ -31,7 +31,7 @@ const ContactUs = () => {
   return (
     <div className="bg-gray-100 py-10">
       <div className="container mx-auto px-6 lg:px-16 flex flex-wrap  rounded-lg overflow-hidden">
-        /* Left Section */
+        {/* Left Section */}
         <div className="w-full md:w-1/2 bg-[#124e66] text-white p-8">
           <h2 className="text-3xl font-bold mb-6">GET YOUR FREE 30 MIN CONSULTATION</h2>
           <div className="mb-4">
@@ -42,7 +42,7 @@ const ContactUs = () => {
             <h3 className="text-lg font-semibold">OPEN HOURS</h3>
             <p className="text-gray-300">Monday–Friday CST 9:00 AM to 5:00 PM</p>
           </div>
-        </div>}
+        </div>
         <div className="w-full md:w-1/2 bg-white p-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-700">Send Us a Message</h2>
           <form ref={form} onSubmit={sendEmail} className="space-y-4">
