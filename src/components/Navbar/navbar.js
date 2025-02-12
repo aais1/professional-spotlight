@@ -46,7 +46,7 @@ export default function Navbar() {
     { name: "Leaders journey", link: "/leaders-journey" },
     // { name: "Portfolios", link: "/portfolio-hub" },
     { name: "Reviews", link: "/reviews" },
-    { name: "About us", link: "/about-us" },
+    // { name: "About us", link: "/about-us" },
     // { name: "Services", link: "/services" },
     { name: "Contact Us", link: "/contactus" },
   ];
