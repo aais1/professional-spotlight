@@ -52,7 +52,7 @@ function App() {
         <Route path="/search/:query" element={<SearchResults />} />
         <Route path="/reviews" element={<Review />} />
         {/* <Route path="/about-us" element={<About />} /> */}
-        <Route path="/services" element={<Services />} />
+        {/* <Route path="/services" element={<Services />} /> */}
         <Route path="/contactus" element={<ContactUs />} />
         <Route
           path="/biography/test-biography/:slug"
