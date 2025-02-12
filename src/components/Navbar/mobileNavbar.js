@@ -43,13 +43,13 @@ export default function MobileNavbar({
       {isOpen && (
         <div className="fixed top-0 left-0 w-3/5 h-full bg-white p-4 space-y-2 z-50">
           {/* Menu Links */}
-          <RouterLink
+          {/* <RouterLink
             to="/portfolio-hub"
             className="py-2 font-[Cambria] text-center block"
             onClick={toggleMobileNavbar}
           >
             Portfolios
-          </RouterLink>
+          </RouterLink> */}
           <RouterLink
             to="/leaders-journey"
             className="py-2 font-[Cambria] text-center block"
@@ -71,13 +71,13 @@ export default function MobileNavbar({
           >
             About us
           </RouterLink>
-          <RouterLink
+          {/* <RouterLink
             to="/services"
             className="py-2 font-[Cambria] text-center block"
             onClick={toggleMobileNavbar}
           >
             Services
-          </RouterLink>
+          </RouterLink> */}
 
           <RouterLink
             to="/contactus"
@@ -86,7 +86,6 @@ export default function MobileNavbar({
           >
             Contact Us
           </RouterLink>
-
 
           {/* Authentication Buttons */}
           <button

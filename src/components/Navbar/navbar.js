@@ -44,17 +44,15 @@ export default function Navbar() {
 
   const links = [
     { name: "Leaders journey", link: "/leaders-journey" },
-    { name: "Portfolios", link: "/portfolio-hub" },
+    // { name: "Portfolios", link: "/portfolio-hub" },
     { name: "Reviews", link: "/reviews" },
     { name: "About us", link: "/about-us" },
-    { name: "Services", link: "/services" },
+    // { name: "Services", link: "/services" },
     { name: "Contact Us", link: "/contactus" },
   ];
 
   // Condition to show the back button or the navbar
-  if (
-    pathname.includes("portfolio-hub")
-  ) {
+  if (pathname.includes("portfolio-hub")) {
     return (
       <div className="pt-4 mx-4 flex justify-between items-center">
         <button
