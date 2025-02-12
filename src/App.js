@@ -29,13 +29,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/portfolio-hub" element={<Portfolio />} />
-        <Route path="/portfolio-hub/Healthcare" element={<Portfolio />} />
+        {/* <Route path="/portfolio-hub/Healthcare" element={<Portfolio />} />
         <Route path="/portfolio-hub/Media" element={<Portfolio />} />
         <Route path="/portfolio-hub/Art" element={<Portfolio />} />
         <Route path="/portfolio-hub/Engineering" element={<Portfolio />} />
         <Route path="/portfolio-hub/Business" element={<Portfolio />} />
         <Route path="/portfolio-hub/Journalism" element={<Portfolio />} />
-        <Route path="/portfolio/:slug" element={<SinglePortfolio />} />
+        <Route path="/portfolio/:slug" element={<SinglePortfolio />} /> */}
         <Route path="/leaders-journey" element={<Biographies />} />
         <Route path="/leaders-journey/all" element={<Biographies />} />
         <Route
@@ -51,7 +51,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/search/:query" element={<SearchResults />} />
         <Route path="/reviews" element={<Review />} />
-        <Route path="/about-us" element={<About />} />
+        {/* <Route path="/about-us" element={<About />} /> */}
         <Route path="/services" element={<Services />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route
