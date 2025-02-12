@@ -8,7 +8,7 @@ export default function PortfolioOfTheWeek({ card }) {
   return (
     <div className=" w-full max-w-4xl  mx-auto p-1 md:p-4 font-serif">
       <h1 className="text-base sm:text-4xl mb-4 py-4 font-bold text-center text-[#333]">
-        Portfolio of the Week
+        Biography of the Week
       </h1>
       <div className="sm:flex h-72 sm:h-64">
         <img
