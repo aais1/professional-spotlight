@@ -64,13 +64,13 @@ export default function MobileNavbar({
           >
             Reviews
           </RouterLink>
-          <RouterLink
+          {/* <RouterLink
             to="/about-us"
             className="py-2 font-[Cambria] text-center block"
             onClick={toggleMobileNavbar}
           >
             About us
-          </RouterLink>
+          </RouterLink> */}
           {/* <RouterLink
             to="/services"
             className="py-2 font-[Cambria] text-center block"
